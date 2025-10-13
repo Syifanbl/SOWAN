@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="basis data relasi" id="1D01D7B6-758F-D129-22F0-498622EDA9A0" version="3.5">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 01:07:57 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1D01D7B6-758F-D129-22F0-498622EDA9A0</designId>
+</OSDM_Design>
