@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Genmart" id="6F641983-6EFC-0C3C-DC11-6B2CCB1BA98A" version="3.5">
+<createdBy>syifa</createdBy>
+<createdTime>2025-11-02 03:55:31 UTC</createdTime>
+<ownerDesignName>Genmart</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>6F641983-6EFC-0C3C-DC11-6B2CCB1BA98A</designId>
+</OSDM_Design>
