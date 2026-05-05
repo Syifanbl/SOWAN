@@ -1,0 +1,49 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package sowan.object;
+
+/**
+ *
+ * @author SUWONO
+ */
+public class Karyawan {
+
+    private String uidRfid;
+    private String idKaryawan;
+    private String namaLengkap;
+    private String departemen;
+
+    public String getUidRfid() {
+        return uidRfid;
+    }
+
+    public void setUidRfid(String uidRfid) {
+        this.uidRfid = uidRfid;
+    }
+
+    public String getIdKaryawan() {
+        return idKaryawan;
+    }
+
+    public void setIdKaryawan(String idKaryawan) {
+        this.idKaryawan = idKaryawan;
+    }
+
+    public String getNamaLengkap() {
+        return namaLengkap;
+    }
+
+    public void setNamaLengkap(String namaLengkap) {
+        this.namaLengkap = namaLengkap;
+    }
+
+    public String getDepartemen() {
+        return departemen;
+    }
+
+    public void setDepartemen(String departemen) {
+        this.departemen = departemen;
+    }
+}
