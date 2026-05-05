@@ -7,6 +7,9 @@ package sowan.object;
 import java.time.LocalDateTime;
 
 public class LogAbsensi {
+
+    public LogAbsensi(String namaLengkap, String toString, String waktuBersih, String hadir) {
+    }
     private String idLog;
     private String uidRfid;
     private LocalDateTime waktuTap;

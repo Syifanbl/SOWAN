@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package sowan.object;
 
 /**
@@ -9,26 +10,39 @@ package sowan.object;
  * @author SUWONO
  */
 public class Karyawan {
-
-    private String uidRfid;
-    private String idKaryawan;
+    // Sesuaikan nama variabel dengan field di database
+    private String rfid; 
+    private String nip;  
     private String namaLengkap;
     private String departemen;
 
-    public String getUidRfid() {
-        return uidRfid;
+    // Konstruktor Kosong (WAJIB untuk MongoDB POJO)
+    public Karyawan() {
     }
 
-    public void setUidRfid(String uidRfid) {
-        this.uidRfid = uidRfid;
+    // Konstruktor dengan parameter (Opsional)
+    public Karyawan(String rfid, String nip, String namaLengkap, String departemen) {
+        this.rfid = rfid;
+        this.nip = nip;
+        this.namaLengkap = namaLengkap;
+        this.departemen = departemen;
     }
 
-    public String getIdKaryawan() {
-        return idKaryawan;
+    // --- GETTER & SETTER ---
+    public String getRfid() {
+        return rfid;
     }
 
-    public void setIdKaryawan(String idKaryawan) {
-        this.idKaryawan = idKaryawan;
+    public void setRfid(String rfid) {
+        this.rfid = rfid;
+    }
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
     }
 
     public String getNamaLengkap() {
