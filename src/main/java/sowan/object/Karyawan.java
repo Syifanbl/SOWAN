@@ -5,52 +5,39 @@
 
 package sowan.object;
 
+import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author SUWONO
  */
 public class Karyawan {
-    // Sesuaikan nama variabel dengan field di database
-    private String rfid; 
-    private String nip;  
-    private String namaLengkap;
+    private ObjectId id;
+    private String rfid_uid;
+    private String nama_lengkap;
     private String departemen;
+    private String jam_masuk_standar;
+    private String jam_pulang_standar;
+    private int gaji_harian;
+    private int uang_bonus;
 
-    // Konstruktor Kosong (WAJIB untuk MongoDB POJO)
-    public Karyawan() {
+
+    public String getRfid_uid() {
+        return rfid_uid;
     }
 
-    // Konstruktor dengan parameter (Opsional)
-    public Karyawan(String rfid, String nip, String namaLengkap, String departemen) {
-        this.rfid = rfid;
-        this.nip = nip;
-        this.namaLengkap = namaLengkap;
-        this.departemen = departemen;
+    public void setRfid_uid(String rfid_uid) {
+        this.rfid_uid = rfid_uid;
     }
 
-    // --- GETTER & SETTER ---
-    public String getRfid() {
-        return rfid;
+    public String getNama_lengkap() {
+        return nama_lengkap;
     }
 
-    public void setRfid(String rfid) {
-        this.rfid = rfid;
-    }
-
-    public String getNip() {
-        return nip;
-    }
-
-    public void setNip(String nip) {
-        this.nip = nip;
-    }
-
-    public String getNamaLengkap() {
-        return namaLengkap;
-    }
-
-    public void setNamaLengkap(String namaLengkap) {
-        this.namaLengkap = namaLengkap;
+    public void setNama_lengkap(String nama_lengkap) {
+        this.nama_lengkap = nama_lengkap;
     }
 
     public String getDepartemen() {
@@ -60,4 +47,46 @@ public class Karyawan {
     public void setDepartemen(String departemen) {
         this.departemen = departemen;
     }
+
+    public String getJam_masuk_standar() {
+        return jam_masuk_standar;
+    }
+
+    public void setJam_masuk_standar(String jam_masuk_standar) {
+        this.jam_masuk_standar = jam_masuk_standar;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public int getGaji_harian() {
+        return gaji_harian;
+    }
+
+    public void setGaji_harian(int gaji_harian) {
+        this.gaji_harian = gaji_harian;
+    }
+
+    public int getUang_bonus() {
+        return uang_bonus;
+    }
+
+    public void setUang_bonus(int uang_bonus) {
+        this.uang_bonus = uang_bonus;
+    }
+
+    public String getJam_pulang_standar() {
+        return jam_pulang_standar;
+    }
+
+    public void setJam_pulang_standar(String jam_pulang_standar) {
+        this.jam_pulang_standar = jam_pulang_standar;
+    }
+
+    
 }

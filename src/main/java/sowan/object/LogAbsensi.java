@@ -3,47 +3,56 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sowan.object;
+import org.bson.types.ObjectId;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class LogAbsensi {
+    private ObjectId id;
+    private String rfid_uid;
+    private Date waktu_scan;
+    private String lokasi_mesin;
+    private boolean status_terproses;
 
-    public LogAbsensi(String namaLengkap, String toString, String waktuBersih, String hadir) {
-    }
-    private String idLog;
-    private String uidRfid;
-    private LocalDateTime waktuTap;
-    private String status;
 
-    public String getIdLog() {
-        return idLog;
-    }
-
-    public void setIdLog(String idLog) {
-        this.idLog = idLog;
+    public String getRfid_uid() {
+        return rfid_uid;
     }
 
-    public String getUidRfid() {
-        return uidRfid;
+    public void setRfid_uid(String rfid_uid) {
+        this.rfid_uid = rfid_uid;
     }
 
-    public void setUidRfid(String uidRfid) {
-        this.uidRfid = uidRfid;
+    public Date getWaktu_scan() {
+        return waktu_scan;
     }
 
-    public LocalDateTime getWaktuTap() {
-        return waktuTap;
+    public void setWaktu_scan(Date waktu_scan) {
+        this.waktu_scan = waktu_scan;
     }
 
-    public void setWaktuTap(LocalDateTime waktuTap) {
-        this.waktuTap = waktuTap;
+    public String getLokasi_mesin() {
+        return lokasi_mesin;
     }
 
-    public String getStatus() {
-        return status;
+    public void setLokasi_mesin(String lokasi_mesin) {
+        this.lokasi_mesin = lokasi_mesin;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public boolean isStatus_terproses() {
+        return status_terproses;
     }
+
+    public void setStatus_terproses(boolean status_terproses) {
+        this.status_terproses = status_terproses;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
 }
