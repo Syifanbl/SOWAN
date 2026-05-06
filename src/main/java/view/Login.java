@@ -34,7 +34,9 @@ public class Login extends javax.swing.JFrame {
         username_lbl = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        login_btn = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +59,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(324, Short.MAX_VALUE))
         );
 
-        username_lbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        username_lbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         username_lbl.setForeground(new java.awt.Color(255, 255, 255));
         username_lbl.setText("Ussername");
 
@@ -71,7 +73,15 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Password");
 
-        jButton1.setText("jButton1");
+        login_btn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        login_btn.setForeground(new java.awt.Color(51, 0, 153));
+        login_btn.setText("Login");
+
+        jPasswordField1.setText("jPasswordField1");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Sign In");
 
         javax.swing.GroupLayout gradient41Layout = new javax.swing.GroupLayout(gradient41);
         gradient41.setLayout(gradient41Layout);
@@ -80,30 +90,35 @@ public class Login extends javax.swing.JFrame {
             .addGroup(gradient41Layout.createSequentialGroup()
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(username_lbl))
+                        .addGap(191, 191, 191)
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(username_lbl)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(304, 304, 304)
+                        .addComponent(login_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(617, Short.MAX_VALUE))
+                        .addGap(321, 321, 321)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(539, Short.MAX_VALUE))
         );
         gradient41Layout.setVerticalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradient41Layout.createSequentialGroup()
-                .addGap(285, 285, 285)
+                .addGap(86, 86, 86)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(username_lbl)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addGap(91, 91, 91)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(login_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,9 +179,11 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.sowan.swn.swing.gradient2 gradient21;
     private com.mycompany.sowan.swn.swing.gradient4 gradient41;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton login_btn;
     private javax.swing.JLabel logo_lbl;
     private javax.swing.JLabel username_lbl;
     // End of variables declaration//GEN-END:variables
