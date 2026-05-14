@@ -54,7 +54,7 @@ public class Login extends javax.swing.JFrame {
         gradient21Layout.setVerticalGroup(
             gradient21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradient21Layout.createSequentialGroup()
-                .addGap(242, 242, 242)
+                .addGap(182, 182, 182)
                 .addComponent(logo_lbl)
                 .addContainerGap(324, Short.MAX_VALUE))
         );
@@ -141,7 +141,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(gradient41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         pack();
