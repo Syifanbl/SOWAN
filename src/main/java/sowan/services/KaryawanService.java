@@ -101,7 +101,7 @@ public class KaryawanService {
         lblTitle.setForeground(new Color(44, 62, 80)); // Dark Blue/Gray
 
         JButton btnTambah = new JButton("+ Tambah Karyawan");
-        btnTambah.setBackground(new Color(46, 204, 113)); // Modern Green
+        btnTambah.setBackground(new Color(125, 88, 255)); // Modern Green
         btnTambah.setForeground(Color.WHITE);
         btnTambah.setFont(new Font("SansSerif", Font.BOLD, 14));
         btnTambah.setFocusPainted(false);
