@@ -43,57 +43,36 @@ public class FormTambahKaryawan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        id_karyawan = new javax.swing.JTextField();
-        rfid_uid = new javax.swing.JTextField();
-        nama_lengkap = new javax.swing.JTextField();
-        btnSimpan = new javax.swing.JButton();
-        departemen = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
         shift = new javax.swing.JComboBox<>();
         jabatan = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnBatal = new javax.swing.JButton();
+        nama_lbl = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        id_karyawan = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        rfid_uid = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        nama_lengkap = new javax.swing.JTextField();
+        NIP_lbl = new javax.swing.JLabel();
+        btnSimpan = new javax.swing.JButton();
+        departemen = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 255, 255));
         setUndecorated(true);
 
-        id_karyawan.setText("ID");
-        id_karyawan.addActionListener(new java.awt.event.ActionListener() {
+        jPanel3.setBackground(new java.awt.Color(153, 255, 255));
+
+        shift.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pagi", "Malam", " " }));
+
+        jabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Staf", "Supervisior", " " }));
+        jabatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_karyawanActionPerformed(evt);
+                jabatanActionPerformed(evt);
             }
         });
-
-        rfid_uid.setText("rfid_uid");
-        rfid_uid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rfid_uidActionPerformed(evt);
-            }
-        });
-
-        nama_lengkap.setText("nama_lengkap");
-        nama_lengkap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nama_lengkapActionPerformed(evt);
-            }
-        });
-
-        btnSimpan.setText("Simpan");
-        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSimpanActionPerformed(evt);
-            }
-        });
-
-        departemen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        departemen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                departemenActionPerformed(evt);
-            }
-        });
-
-        shift.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("TAMBAH KARYAWAN");
 
@@ -104,63 +83,177 @@ public class FormTambahKaryawan extends javax.swing.JFrame {
             }
         });
 
+        nama_lbl.setText("Nama ");
+
+        jLabel2.setText("Departemen");
+
+        id_karyawan.setText("ID");
+        id_karyawan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                id_karyawanActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Jabatan");
+
+        rfid_uid.setText("rfid_uid");
+        rfid_uid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rfid_uidActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Shift");
+
+        nama_lengkap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nama_lengkapActionPerformed(evt);
+            }
+        });
+
+        NIP_lbl.setText("NIP");
+
+        btnSimpan.setBackground(new java.awt.Color(0, 51, 204));
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        departemen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departemen Keuangan", "Departemen Marketing", "Departemen IT", "Departemen Operasional" }));
+        departemen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departemenActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(departemen, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NIP_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(id_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jabatan, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnSimpan)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBatal))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(shift, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nama_lengkap, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nama_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(rfid_uid, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jLabel1)))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NIP_lbl)
+                    .addComponent(nama_lbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nama_lengkap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(shift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(departemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(rfid_uid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSimpan)
+                            .addComponent(btnBatal)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rfid_uid, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(81, 81, 81))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(departemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nama_lengkap, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(shift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSimpan)
-                    .addComponent(btnBatal))
-                .addGap(23, 23, 23))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(btnSimpan)
-                .addGap(18, 18, 18)
-                .addComponent(btnBatal)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(id_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rfid_uid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(nama_lengkap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(departemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(shift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void departemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departemenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_departemenActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        try {
+            Karyawan K = new Karyawan();
+            K.setId_karyawan(id_karyawan.getText());
+            K.setRfid_uid (rfid_uid.getText());
+            K.setNama_lengkap(nama_lengkap.getText());
+            K.setDepartemen(departemen.getSelectedItem().toString());
+            K.setJabatan(jabatan.getSelectedItem().toString());
+            K.setShift(shift.getSelectedItem().toString());
+            KaryawanService service = new KaryawanService();
+
+            // 1. Simpan ke Database
+            service.tambahKaryawan(K);
+
+            // 2. Pesan Sukses
+            JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan!");
+
+            // 3. REFRESH Dashboard
+            // Karena fungsi tampilKaryawan ada di service, panggil langsung dari objek service
+            service.tampilKaryawan(targetDashboard, "");
+
+            // 4. Tutup Form
+            this.dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void nama_lengkapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_lengkapActionPerformed
         // TODO add your handling code here:
@@ -170,55 +263,28 @@ public class FormTambahKaryawan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rfid_uidActionPerformed
 
-    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        try {
-        Karyawan K = new Karyawan();
-        K.setId_karyawan(id_karyawan.getText());
-        K.setRfid_uid (rfid_uid.getText());
-        K.setNama_lengkap(nama_lengkap.getText());
-        K.setDepartemen(departemen.getSelectedItem().toString());
-        K.setJabatan(jabatan.getSelectedItem().toString());
-        K.setShift(shift.getSelectedItem().toString());
-        KaryawanService service = new KaryawanService();
-        
-        // 1. Simpan ke Database
-        service.tambahKaryawan(K);
-
-        // 2. Pesan Sukses
-        JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan!");
-
-        // 3. REFRESH Dashboard
-        // Karena fungsi tampilKaryawan ada di service, panggil langsung dari objek service
-        service.tampilKaryawan(targetDashboard, "");
-
-        // 4. Tutup Form
-        this.dispose(); 
-        
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Gagal: " + e.getMessage());
-    }
-    }//GEN-LAST:event_btnSimpanActionPerformed
-
-    private void departemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departemenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_departemenActionPerformed
-
     private void id_karyawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_karyawanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_id_karyawanActionPerformed
 
-    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-    this.dispose(); 
-    }//GEN-LAST:event_btnBatalActionPerformed
+    private void jabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabatanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jabatanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NIP_lbl;
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox<String> departemen;
     private javax.swing.JTextField id_karyawan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JComboBox<String> jabatan;
+    private javax.swing.JLabel nama_lbl;
     private javax.swing.JTextField nama_lengkap;
     private javax.swing.JTextField rfid_uid;
     private javax.swing.JComboBox<String> shift;
