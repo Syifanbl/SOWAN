@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DE276474-B8E6-83F7-DE7A-1EA9A3E21066" name="kepemilikan">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:39:58 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_kepemilikan" id="B08D8042-512D-1975-B074-5B5CC4FB3742">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:41:16 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tanggal" id="6FD97313-EF12-E50A-AEF0-46E5C4250AF5">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:41:58 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nim" id="599EFF0C-2F9F-3094-53C9-A5787C820BBD">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:45:29 UTC</createdTime>
+<generatorID>0D835206-7EC2-A0C8-1F87-DB57B3C78B59</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<referedAttribute>77803CAD-3743-2EBF-944C-0EBE607707E1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_laptop" id="E7E0B871-2740-C85D-4F0D-BCCEC0B02EB7">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:46:18 UTC</createdTime>
+<generatorID>1E48B421-F6E0-16A7-FA38-9176A16B73EF</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<referedAttribute>E0B8C2D6-E184-5D13-94B8-FCABD4A41781</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_experience" id="FD1745B2-766C-C349-8169-D51773C82F99">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:22:14 UTC</createdTime>
+<generatorID>1EEF5011-C0FB-D448-1C5E-27388275A038</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<referedAttribute>F3F25407-F3EE-C3A9-F74E-965FCC864B98</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_desain" id="437C8C1D-4E6E-9138-A426-0A4F19475B42">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:22:36 UTC</createdTime>
+<generatorID>DBE8FB04-2409-996F-BD59-CDD238631DBD</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<referedAttribute>7A2F2934-9CD3-F34D-B955-01ADA6ACEB0B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_kecepatan" id="DBA3FB0F-CE7C-847F-443D-8B416A60EA42">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:23:11 UTC</createdTime>
+<generatorID>EC63FD91-0468-4EA9-D9EF-8B50C234E434</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<referedAttribute>EFC4CA3A-8176-C126-2048-C94CBBD42337</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FEFADC5D-57B1-27A4-7256-E279B2E1B824" name="kepemilikan PK">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:41:57 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B08D8042-512D-1975-B074-5B5CC4FB3742</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

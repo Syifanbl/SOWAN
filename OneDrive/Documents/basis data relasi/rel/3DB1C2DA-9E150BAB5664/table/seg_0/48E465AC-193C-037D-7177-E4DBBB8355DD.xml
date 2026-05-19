@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="48E465AC-193C-037D-7177-E4DBBB8355DD" name="mahasiswa">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>CCCA00CF-76E4-5B8C-DE34-1F67BF59FA25</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="nim" id="AC3EA1E7-EB7D-1FA2-3948-653DB9403450">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>77803CAD-3743-2EBF-944C-0EBE607707E1</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nama" id="58663549-2CEA-1EC2-46B2-B913E7149ED2">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>A177DF91-A794-3565-1BA8-D642361BFD9F</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="alamat" id="DC426797-F8DB-6F88-F733-15FCA04DD3F7">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>52368E23-05EE-FF33-2260-27D8AA840255</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tempat_lahir" id="3E7281B5-85F7-CAC5-78F3-8AA7D81FFD75">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>D425F264-AAD9-4AC4-63DB-FDA4DFC6F8BC</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tanggal_lahir" id="11AD2647-C39E-4381-40EE-55E91820EB4E">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>D3ACD042-B658-FC13-710A-813AD04A988B</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="no_kontak" id="7B84BC5F-1CF9-7ECB-54DE-CBC9E31E1182">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>99507448-F462-ABDF-3593-41DED848D46A</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>14</dataTypeSize>
+<ownDataTypeParameters>14,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="7C47DAF3-D566-27DC-5D86-6FA5DBC65430">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>1C288658-FC6D-5A26-70E5-96646418BDEF</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_gender" id="892E863E-6AAB-F9DF-2FE9-D0DAF0730ABF">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>58FD2773-EF77-41AB-9B0D-8F2EE4ADCC33</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B7776800-F70D-75CE-E314-EB63670ADBB0" name="mahasiswa_PK">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>BB8A51BA-898C-C335-E8A3-057E7820FE33</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC3EA1E7-EB7D-1FA2-3948-653DB9403450"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C2520129-1D95-A171-1804-1CB712A165C8" name="mahasiswa_no_kontak_UN">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:07:26 UTC</createdTime>
+<generatorID>7D11B9E3-CB25-F86C-9936-F1BD8A3DA49E</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7B84BC5F-1CF9-7ECB-54DE-CBC9E31E1182"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1900D757-14B1-DAA4-D1E0-BA8B9EDEFC7A" name="mahasiswa_email_UN">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:07:26 UTC</createdTime>
+<generatorID>FC4B264E-C031-B384-24C4-0FF1AB54F1F7</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7C47DAF3-D566-27DC-5D86-6FA5DBC65430"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8CB8FA20-6534-CB97-FC06-3AD9F6925783" containerWithKeyObject="6E560518-41CF-77B1-24FA-9265CA90C970" localFKIndex="B0257876-2FFA-F3A0-F4E7-C8D43E941228" name="kepemilikan_mahasiswa_FK">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>0D835206-7EC2-A0C8-1F87-DB57B3C78B59</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<referredTableLongName>mahasiswa</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>48E465AC-193C-037D-7177-E4DBBB8355DD</referredTableID>
+<keyObject>B7776800-F70D-75CE-E314-EB63670ADBB0</keyObject>
+<referredKeyID>B7776800-F70D-75CE-E314-EB63670ADBB0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>nim</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
