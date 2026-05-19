@@ -4,9 +4,9 @@
  */
 package com.mycompany.sowan;
 
-import java.awt.Frame;
+
 import sowan.gui.DashboardPage;
-import sowan.services.SerialService;
+
 
 
 /**
@@ -18,26 +18,15 @@ public class MainApp extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainApp.class.getName());
 
     /**
-     * Creates new form MainApp
+     * Creates new form MainLogin
      */
+    
+ 
     public MainApp() {
-        // 1. Koneksi sekali saja saat aplikasi start
-        SerialService.getInstance().connect("COM3", 9600);
+        initComponents();
+        setLocationRelativeTo(null);
 
-        // 2. Tambahkan Global Observer (misal untuk Logging)
-        SerialService.getInstance().addHandler(tagId -> {
-            System.out.println("Global Log: Kartu " + tagId + " terdeteksi.");
-            // Jalankan fungsi database di sini
-        });
-        
-        // 3. Contoh update UI di MainFrame
-        SerialService.getInstance().addHandler(tagId -> {
-            javax.swing.SwingUtilities.invokeLater(() -> {
-                //lblStatus.setText("User Terakhir: " + tagId);
-            });
-        });
-        initComponents();        
-        
+    
     }
 
     /**
@@ -54,6 +43,8 @@ public class MainApp extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         btnLogin = new javax.swing.JToggleButton();
+        username = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,26 +57,34 @@ public class MainApp extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("Username");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("Password");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(204, 0, 204));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
+
+        username.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        username.setForeground(new java.awt.Color(255, 255, 255));
+        username.setText("Ussername");
+
+        password.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setText("Password");
 
         javax.swing.GroupLayout gradient41Layout = new javax.swing.GroupLayout(gradient41);
         gradient41.setLayout(gradient41Layout);
@@ -94,21 +93,27 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(gradient41Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username)
+                    .addComponent(password))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         gradient41Layout.setVerticalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradient41Layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addComponent(username)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnLogin)
-                .addGap(121, 121, 121))
+                .addGap(36, 36, 36)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
 
         getContentPane().add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, -1));
@@ -119,7 +124,7 @@ public class MainApp extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 255));
@@ -142,10 +147,25 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // AMBIL INPUT DARI TEXTFIELD
+    String user = jTextField1.getText();
+    String pass = jTextField2.getText();
+
+    // LOGIKA PENGECEKAN
+    if (user.equals("admin") && pass.equals("1234")) {
+        // Jika benar, buka Dashboard
         DashboardPage dashboard = new DashboardPage();
-        dashboard.setVisible (true);
-        dashboard.setExtendedState (Frame.MAXIMIZED_BOTH);
-        this.dispose(); 
+        dashboard.setVisible(true);
+        
+        // Tutup form login ini
+        this.dispose();
+    } else {
+        // Jika salah, munculkan notifikasi
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Username atau Password salah!", 
+            "Login Gagal", 
+            javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -170,5 +190,11 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel password;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
+
+
+
+
 }
