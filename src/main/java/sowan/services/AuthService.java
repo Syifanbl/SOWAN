@@ -52,8 +52,7 @@ public class AuthService {
             DashboardPage DsbPage = new DashboardPage();
             DsbPage.setLocationRelativeTo(null); 
             DsbPage.setVisible(true);
-            DsbPage.setExtendedState(Frame.MAXIMIZED_BOTH); 
-            mainApp.setVisible(false); 
+            mainApp.setExtendedState(Frame.MAXIMIZED_BOTH); 
         } else {
             // Gagal: Notifikasi Error
             JOptionPane.showMessageDialog(null,
