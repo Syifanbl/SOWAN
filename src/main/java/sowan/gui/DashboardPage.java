@@ -140,7 +140,11 @@ public class DashboardPage extends javax.swing.JFrame {
             }
         });
 
+        Logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Logout.setForeground(new java.awt.Color(255, 255, 255));
         Logout.setText("Logout");
+        Logout.setBorderPainted(false);
+        Logout.setContentAreaFilled(false);
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutActionPerformed(evt);
@@ -162,6 +166,10 @@ public class DashboardPage extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(gradient41Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRekapPresensi))
+                    .addGroup(gradient41Layout.createSequentialGroup()
                         .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(gradient41Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -173,16 +181,13 @@ public class DashboardPage extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(gradient41Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRekapPresensi)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Logout)
+                            .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         gradient41Layout.setVerticalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,14 +210,14 @@ public class DashboardPage extends javax.swing.JFrame {
                     .addGroup(gradient41Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(50, 50, 50))
         );
 
-        gradient21.add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 740));
+        gradient21.add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 660));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setAlignmentX(0.0F);
@@ -257,7 +262,7 @@ public class DashboardPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        gradient21.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 50));
+        gradient21.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 50));
 
         targetDashboard.setPreferredSize(new java.awt.Dimension(1020, 590));
 
@@ -272,39 +277,41 @@ public class DashboardPage extends javax.swing.JFrame {
         targetDashboardLayout.setHorizontalGroup(
             targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(497, 497, 497))
-            .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(targetDashboardLayout.createSequentialGroup()
+                        .addGap(288, 288, 288)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(targetDashboardLayout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         targetDashboardLayout.setVerticalGroup(
             targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addGap(152, 152, 152)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, targetDashboardLayout.createSequentialGroup()
+                .addContainerGap(210, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addGap(202, 202, 202))
         );
 
-        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 1160, 760));
+        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 1030, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, 1421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, 1288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
