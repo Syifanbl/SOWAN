@@ -54,7 +54,7 @@ public class KaryawanService {
     }
    
     public void tambahKaryawan(String id_karyawan, String rfid_uid, String nama_lengkap, String departemen, String jabatan, String shift) {
-        Karyawan karyawanBaru = new Karyawan(id_karyawan, rfid_uid, nama_lengkap, departemen, jabatan, shift);
+                    Karyawan karyawanBaru = new Karyawan(id_karyawan, rfid_uid, nama_lengkap, departemen, jabatan, shift);
         DAO.save(karyawanBaru); // Memanggil insertOne melalui GenericDAO [3]
     }
     

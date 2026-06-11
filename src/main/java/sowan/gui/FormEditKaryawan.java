@@ -6,6 +6,7 @@ package sowan.gui;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import koneksi.Security;
 import sowan.objects.Karyawan;
 import sowan.services.KaryawanService;
 
@@ -240,13 +241,21 @@ public class FormEditKaryawan extends javax.swing.JFrame {
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         try {
-            Karyawan K = new Karyawan();
+           Karyawan K = new Karyawan();
+
             K.setId_karyawan(id_karyawan.getText());
-            K.setRfid_uid(rfid_uid.getText());
-            K.setNama_lengkap(nama_lengkap.getText());
-            K.setDepartemen(txtDepartemen.getSelectedItem().toString());
-            K.setJabatan(jabatan.getSelectedItem().toString());
-            K.setShift(shift.getSelectedItem().toString());
+
+            K.setRfid_uid(
+                Security.getHash(
+                    rfid_uid.getText(),
+                    Security.SHA_256
+                 )
+            );
+
+        K.setNama_lengkap(nama_lengkap.getText());
+        K.setDepartemen(txtDepartemen.getSelectedItem().toString());
+        K.setJabatan(jabatan.getSelectedItem().toString());
+        K.setShift(shift.getSelectedItem().toString());
 
             KaryawanService service = new KaryawanService();
 
