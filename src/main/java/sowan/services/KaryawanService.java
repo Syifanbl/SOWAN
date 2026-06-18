@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import koneksi.EncryptionUtils;
 /**
  *
  * @author SUWONO
@@ -136,7 +137,7 @@ public class KaryawanService {
                 // Kita menggabungkan semua info ke dalam satu JLabel HTML
                 String infoHtml = "<html>"
                         + "<table style='margin-bottom: 5px;'>"
-                        + "<tr><td><font color='#7f8c8d'><b>ID</b></font></td><td>:</td><td>" + k.getId_karyawan() + "</td></tr>"
+                        + "<tr><td><font color='#7f8c8d'><b>ID</b></font></td><td>:</td><td>" + EncryptionUtils.decrypt(k.getId_karyawan()) + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>Nama</b></font></td><td>:</td><td>" + k.getNama_lengkap() + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>RFID</b></font></td><td>:</td><td>" + k.getRfid_uid() + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>Dept</b></font></td><td>:</td><td>" + k.getDepartemen() + "</td></tr>"
