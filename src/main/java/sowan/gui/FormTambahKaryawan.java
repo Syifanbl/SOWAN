@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import sowan.services.KaryawanService;
 import sowan.objects.Karyawan;
+import koneksi.Security;
+import koneksi.Encryption;
 
 /**
  *
@@ -229,8 +231,8 @@ public class FormTambahKaryawan extends javax.swing.JFrame {
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         try {
             Karyawan K = new Karyawan();
-            K.setId_karyawan(id_karyawan.getText());
-            K.setRfid_uid (rfid_uid.getText());
+            K.setId_karyawan(Encryption.encrypt(id_karyawan.getText()));
+            K.setRfid_uid(Security.getHash(rfid_uid.getText(), Security.SHA_256));
             K.setNama_lengkap(nama_lengkap.getText());
             K.setDepartemen(departemen.getSelectedItem().toString());
             K.setJabatan(jabatan.getSelectedItem().toString());
