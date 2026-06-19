@@ -14,7 +14,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 
 public class MongoManager {
     private static MongoDatabase database;
-
+                                    
     public static MongoDatabase getDatabase() {
         if (database == null) {
             try {

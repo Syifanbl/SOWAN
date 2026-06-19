@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import sowan.services.KaryawanService;
 import sowan.objects.Karyawan;
+import koneksi.Security;
+import koneksi.Encryption;
 
 /**
  *
@@ -181,8 +183,8 @@ public class FormTambahKaryawan extends javax.swing.JFrame {
                     .addComponent(nama_lengkap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(id_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -229,8 +231,8 @@ public class FormTambahKaryawan extends javax.swing.JFrame {
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         try {
             Karyawan K = new Karyawan();
-            K.setId_karyawan(id_karyawan.getText());
-            K.setRfid_uid (rfid_uid.getText());
+            K.setId_karyawan(Encryption.encrypt(id_karyawan.getText()));
+            K.setRfid_uid(Security.getHash(rfid_uid.getText(), Security.SHA_256));
             K.setNama_lengkap(nama_lengkap.getText());
             K.setDepartemen(departemen.getSelectedItem().toString());
             K.setJabatan(jabatan.getSelectedItem().toString());
