@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A40C97D1-5AAA-ABA5-F3DC-47CC023A27F3" name="laptop">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>F0D2D80C-450B-A311-1433-5A792B829F0C</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_laptop" id="79FD2884-F0D2-EA95-51E5-A11DBA43E82B">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>E0B8C2D6-E184-5D13-94B8-FCABD4A41781</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="merk" id="F8125128-4C80-F102-79EA-D1A9A17C0EC3">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>4214BA30-65DE-B4EA-FBBB-68AD5DA849FF</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<use>0</use>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="processor" id="E06A0421-AA3A-1BB4-108B-2A8FC817CE5B">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>E77ACC1B-B8C8-0EC3-78C7-82DE648C75BE</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RAM" id="EBB564E6-7D6B-7684-6854-51F0E75C0680">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>7BB90DF6-459A-6A69-6D2B-0AA7793B2CB3</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="harga" id="781CA691-4CFC-2D6F-711A-417C05D5DF64">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>882B0B2E-85C7-9488-DF41-83CC42C1A97C</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SSD" id="96B34D29-F22C-55C2-6A44-8BEC7325F345">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>E5C7643C-9576-BF01-522E-6FFF4B5CC01B</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="29A49732-4515-9A0D-9A75-6EA2214DAF8A" name="laptop_PK">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:53:26 UTC</createdTime>
+<generatorID>D551FBD6-8A8A-DDC2-0236-929B2DE06683</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79FD2884-F0D2-EA95-51E5-A11DBA43E82B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

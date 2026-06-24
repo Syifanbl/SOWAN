@@ -1,0 +1,177 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CCCA00CF-76E4-5B8C-DE34-1F67BF59FA25" name="mahasiswa">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:00:32 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="nim" id="77803CAD-3743-2EBF-944C-0EBE607707E1">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:01:04 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nama" id="A177DF91-A794-3565-1BA8-D642361BFD9F">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:01:17 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="alamat" id="52368E23-05EE-FF33-2260-27D8AA840255">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:01:52 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tempat_lahir" id="D425F264-AAD9-4AC4-63DB-FDA4DFC6F8BC">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:02:01 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tanggal_lahir" id="D3ACD042-B658-FC13-710A-813AD04A988B">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:02:11 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="no_kontak" id="99507448-F462-ABDF-3593-41DED848D46A">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:02:17 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>14</dataTypeSize>
+<ownDataTypeParameters>14,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="1C288658-FC6D-5A26-70E5-96646418BDEF">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:02:27 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_gender" id="58FD2773-EF77-41AB-9B0D-8F2EE4ADCC33">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:09:28 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_gender1" id="4F8FEAD9-6727-67AF-5AE2-F1CFEC1AA217">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:12:07 UTC</createdTime>
+<generatorID>A32AD271-03CF-150D-A643-E01ED5683402</generatorID>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<referedAttribute>475BAF05-D215-9C53-BDB1-D6A31B4BE0D1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BB8A51BA-898C-C335-E8A3-057E7820FE33" name="mahasiswa PK">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 02:09:43 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>77803CAD-3743-2EBF-944C-0EBE607707E1</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="7D11B9E3-CB25-F86C-9936-F1BD8A3DA49E" name="no_kontak_uq">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:06:24 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<newElementsIDs>99507448-F462-ABDF-3593-41DED848D46A</newElementsIDs>
+<usedAttributes>
+<attributeRef>99507448-F462-ABDF-3593-41DED848D46A</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="FC4B264E-C031-B384-24C4-0FF1AB54F1F7" name="email_uq">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:06:51 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<newElementsIDs>1C288658-FC6D-5A26-70E5-96646418BDEF</newElementsIDs>
+<usedAttributes>
+<attributeRef>1C288658-FC6D-5A26-70E5-96646418BDEF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

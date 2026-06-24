@@ -47,7 +47,10 @@ public class DashboardPage extends javax.swing.JFrame {
         styleMenuButton(btnDataKaryawan);
         styleMenuButton(btnRekapPresensi);
         styleMenuButton(btnSetting);
-
+    
+    // Khusus tombol keluar, mungkin fontnya dibuat tidak bold (opsional)
+        styleMenuButton(btnKeluar);
+    btnKeluar.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
     }
 
     /**
@@ -61,6 +64,7 @@ public class DashboardPage extends javax.swing.JFrame {
 
         gradient21 = new com.mycompany.sowan.swn.swing.gradient2();
         gradient41 = new com.mycompany.sowan.swn.swing.gradient4();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -69,22 +73,27 @@ public class DashboardPage extends javax.swing.JFrame {
         btnDataKaryawan = new javax.swing.JButton();
         btnRekapPresensi = new javax.swing.JButton();
         btnSetting = new javax.swing.JButton();
-        Logout = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        btnKeluar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         txtCari = new javax.swing.JTextField();
         targetDashboard = new com.mycompany.sowan.swn.swing.gradient2();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         gradient21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-dashboard-24.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-people-24 (1).png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,17 +151,10 @@ public class DashboardPage extends javax.swing.JFrame {
             }
         });
 
-        Logout.setText("Logout");
-        Logout.addActionListener(new java.awt.event.ActionListener() {
+        btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-dashboard-24.png"))); // NOI18N
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                btnKeluarActionPerformed(evt);
             }
         });
 
@@ -161,71 +163,69 @@ public class DashboardPage extends javax.swing.JFrame {
         gradient41Layout.setHorizontalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradient41Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(21, 21, 21)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradient41Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                        .addGap(56, 56, 56))
                     .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnRekapPresensi)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(gradient41Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnKeluar))
+                            .addGroup(gradient41Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDashboard))
+                            .addGroup(gradient41Layout.createSequentialGroup()
+                                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnRekapPresensi)
+                                    .addComponent(btnDataKaryawan))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         gradient41Layout.setVerticalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradient41Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
+                .addGap(130, 130, 130)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(32, 32, 32)
-                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(41, 41, 41)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRekapPresensi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(34, 34, 34)
+                    .addComponent(btnDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(38, 38, 38)
+                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(btnRekapPresensi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
-                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKeluar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(50, 50, 50))
+                .addGap(19, 19, 19))
         );
 
-        gradient21.add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, 720));
+        gradient21.add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 580));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/orang.png"))); // NOI18N
+        jLabel6.setText("ICONPROFILE");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Desain tanpa judul.png"))); // NOI18N
         jLabel7.setText("LOGO");
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 40, 40));
 
         txtCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,39 +237,40 @@ public class DashboardPage extends javax.swing.JFrame {
                 txtCariKeyReleased(evt);
             }
         });
-        jPanel2.add(txtCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 808, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 821, Short.MAX_VALUE)
+                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel6)
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        gradient21.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 70));
-
-        targetDashboard.setPreferredSize(new java.awt.Dimension(1020, 590));
+        gradient21.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 153));
         jLabel8.setText("SELAMAT DATANG");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel9.setText("SENSOR KARYAWAN");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sowan-removebg-preview.png"))); // NOI18N
 
@@ -278,39 +279,44 @@ public class DashboardPage extends javax.swing.JFrame {
         targetDashboardLayout.setHorizontalGroup(
             targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(497, 497, 497))
-            .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE)
+                .addGroup(targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, targetDashboardLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, targetDashboardLayout.createSequentialGroup()
+                        .addGroup(targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(targetDashboardLayout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)))
+                        .addGap(214, 214, 214))))
         );
         targetDashboardLayout.setVerticalGroup(
             targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addGap(152, 152, 152)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
-        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 1120, 760));
+        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 1020, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, 1243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE))
+            .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -338,6 +344,20 @@ public class DashboardPage extends javax.swing.JFrame {
         showData("");
     }//GEN-LAST:event_btnDataKaryawanActionPerformed
     
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+    MainApp main = new MainApp();
+        main.setVisible(true); 
+        this.dispose();
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
+    
+    }//GEN-LAST:event_txtCariActionPerformed
+
+    private void txtCariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyReleased
+    showData(txtCari.getText());
+    }//GEN-LAST:event_txtCariKeyReleased
+
     private void btnRekapPresensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapPresensiActionPerformed
     // 1. Bersihkan panel dashboard dari konten lama
     targetDashboard.removeAll();
@@ -373,24 +393,29 @@ public class DashboardPage extends javax.swing.JFrame {
     targetDashboard.repaint();
     }//GEN-LAST:event_btnSettingActionPerformed
 
-    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-         MainApp main = new MainApp();
-        main.setVisible(true); 
-        this.dispose();      // TODO add your handling code here:
-    }//GEN-LAST:event_LogoutActionPerformed
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        showData("");        // TODO add your handling code here:
+     showData("");
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-      MainApp main = new MainApp();
-        main.setVisible(true); 
-        this.dispose();         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseClicked
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+      // 1. Bersihkan panel dashboard dari konten lama
+    targetDashboard.removeAll();
+    
+    // 2. Inisialisasi Panel Rekap Absensi
+    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+    PanelDashboard rekap = new PanelDashboard();
+    
+    // 3. Masukkan ke targetDashboard
+    targetDashboard.setLayout(new java.awt.BorderLayout());
+    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+    
+    // 4. Refresh tampilan agar muncul
+    targetDashboard.revalidate();
+    targetDashboard.repaint();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-            // 1. Bersihkan panel dashboard dari konten lama
+      // 1. Bersihkan panel dashboard dari konten lama
     targetDashboard.removeAll();
     
     // 2. Inisialisasi Panel Rekap Absensi
@@ -404,10 +429,11 @@ public class DashboardPage extends javax.swing.JFrame {
     // 4. Refresh tampilan agar muncul
     targetDashboard.revalidate();
     targetDashboard.repaint();
+
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-      // 1. Bersihkan panel dashboard dari konten lama
+     // 1. Bersihkan panel dashboard dari konten lama
     targetDashboard.removeAll();
     
     // 2. Inisialisasi Panel Rekap Absensi
@@ -423,30 +449,11 @@ public class DashboardPage extends javax.swing.JFrame {
     targetDashboard.repaint();
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelDashboard rekap = new PanelDashboard();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void txtCariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyReleased
-        showData(txtCari.getText());
-    }//GEN-LAST:event_txtCariKeyReleased
-
-    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
-
-    }//GEN-LAST:event_txtCariActionPerformed
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    MainApp main = new MainApp();
+        main.setVisible(true); 
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -474,16 +481,15 @@ public class DashboardPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    javax.swing.JButton Logout;
     javax.swing.JButton btnDashboard;
     javax.swing.JButton btnDataKaryawan;
+    javax.swing.JButton btnKeluar;
     javax.swing.JButton btnRekapPresensi;
     javax.swing.JButton btnSetting;
     com.mycompany.sowan.swn.swing.gradient2 gradient21;
     com.mycompany.sowan.swn.swing.gradient4 gradient41;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
-    javax.swing.JLabel jLabel11;
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
@@ -491,8 +497,8 @@ public class DashboardPage extends javax.swing.JFrame {
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
     javax.swing.JLabel jLabel8;
+    javax.swing.JLabel jLabel9;
     javax.swing.JPanel jPanel1;
-    javax.swing.JPanel jPanel2;
     com.mycompany.sowan.swn.swing.gradient2 targetDashboard;
     javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables
@@ -500,4 +506,5 @@ public void showData(String key) {
         KaryawanService K = new KaryawanService();
         K.tampilKaryawan(targetDashboard, key);
     }
+
 }

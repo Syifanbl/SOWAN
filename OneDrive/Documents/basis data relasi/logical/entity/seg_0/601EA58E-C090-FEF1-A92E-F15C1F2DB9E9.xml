@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="601EA58E-C090-FEF1-A92E-F15C1F2DB9E9" name="gender">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:08:26 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_gender" id="475BAF05-D215-9C53-BDB1-D6A31B4BE0D1">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:09:01 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="jenis_kelamin" id="9BE5DFCF-B521-FA03-570E-A3A5DC8CC0AD">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:09:25 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="278BE854-4DC0-D441-A042-AF34112E2819" name="gender PK">
+<createdBy>syifa</createdBy>
+<createdTime>2025-10-13 03:10:14 UTC</createdTime>
+<ownerDesignName>basis data relasi</ownerDesignName>
+<engineerTo>
+<item key="3DB1C2DA-F8AB-BDF2-657C-9E150BAB5664" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>475BAF05-D215-9C53-BDB1-D6A31B4BE0D1</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
