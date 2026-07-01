@@ -86,17 +86,16 @@
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="Logout" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnDataKaryawan" max="32767" attributes="0"/>
-                                      <Component id="btnSetting" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnDashboard" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnDataKaryawan" max="32767" attributes="0"/>
+                                  <Component id="btnSetting" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnDashboard" max="32767" attributes="0"/>
+                                  <Component id="btnabsesn" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -126,7 +125,9 @@
                               <Component id="btnSetting" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="btnabsesn" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace pref="192" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Logout" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -233,6 +234,14 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel11MouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnabsesn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Absen"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnabsesnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

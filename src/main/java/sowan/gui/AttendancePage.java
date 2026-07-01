@@ -4,19 +4,47 @@
  */
 package sowan.gui;
 
+
+import com.mycompany.sowan.MainApp;
+import sowan.services.DigitalClockService;
+import sowan.panels.PanelPengaturan;
+import sowan.objects.Karyawan;
+import sowan.services.bahasaService;
+import sowan.services.KaryawanService;
+import sowan.services.LogAbsensiService;
+import sowan.services.SerialService;
+import koneksi.EncryptionUtils;
+import koneksi.SecurityUtils;
+import java.util.Locale;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author SUWONO
  */
 public class AttendancePage extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AttendancePage.class.getName());
+    private Thread clockThread;
+
+    Thread delayThread;
 
     /**
      * Creates new form AttendancePage
      */
     public AttendancePage() {
+        bahasaService.setLocale(Locale.forLanguageTag(PanelPengaturan.prefs.get("LANGUAGE", PanelPengaturan.statusLang))); 
         initComponents();
+
+        initClock(labelwaktu);
+        labelstatus.setText(PanelPengaturan.prefs.get("LAST_STATUS", PanelPengaturan.statusAbsen));
+
+        //inisialisasi thread delayThread
+        updateLabelWithDelay(labelstatus, "");
+        
+        
+        registerHandler();
+        
     }
 
     /**
@@ -28,47 +56,349 @@ public class AttendancePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gradient41 = new com.mycompany.sowan.swn.swing.gradient4();
+        gradient21 = new com.mycompany.sowan.swn.swing.gradient2();
+        jButton2 = new javax.swing.JButton();
+        gradient31 = new com.mycompany.sowan.swn.swing.gradient3();
+        jPanel1 = new javax.swing.JPanel();
+        labelname = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        labelid = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        labeldepartemen = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        labeljabatan = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        labelstatus = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        labelwaktu = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout gradient41Layout = new javax.swing.GroupLayout(gradient41);
+        gradient41.setLayout(gradient41Layout);
+        gradient41Layout.setHorizontalGroup(
+            gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        gradient41Layout.setVerticalGroup(
+            gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+
+        gradient21.setBackground(new java.awt.Color(204, 204, 255));
+        gradient21.setOpaque(true);
+
+        jButton2.setText("Tutup");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        labelname.setText("ini nama");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelname)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+
+        labelid.setText("ini id");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelid)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        labeldepartemen.setText("ini departemen");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labeldepartemen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labeldepartemen)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+
+        labeljabatan.setText("ini jabatan");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labeljabatan, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(labeljabatan)
+                .addContainerGap())
+        );
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
+
+        labelstatus.setText("ini status");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(labelstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout gradient31Layout = new javax.swing.GroupLayout(gradient31);
+        gradient31.setLayout(gradient31Layout);
+        gradient31Layout.setHorizontalGroup(
+            gradient31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradient31Layout.createSequentialGroup()
+                .addContainerGap(146, Short.MAX_VALUE)
+                .addGroup(gradient31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(127, 127, 127))
+        );
+        gradient31Layout.setVerticalGroup(
+            gradient31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gradient31Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+
+        jButton1.setText("ini tombol test");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel6.setBackground(new java.awt.Color(153, 204, 255));
+
+        labelwaktu.setText("ini waktu");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelwaktu, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelwaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout gradient21Layout = new javax.swing.GroupLayout(gradient21);
+        gradient21.setLayout(gradient21Layout);
+        gradient21Layout.setHorizontalGroup(
+            gradient21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradient21Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(268, 268, 268))
+            .addGroup(gradient21Layout.createSequentialGroup()
+                .addGroup(gradient21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gradient21Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton2))
+                    .addGroup(gradient21Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(gradient31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(gradient21Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+        gradient21Layout.setVerticalGroup(
+            gradient21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gradient21Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jButton2)
+                .addGap(73, 73, 73)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gradient31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jButton1)
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                  SerialService.getInstance().broadcast("100");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    MainApp main = new MainApp();
+        main.setVisible(true); 
+        this.dispose();         
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AttendancePage().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+            new AttendancePage().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.mycompany.sowan.swn.swing.gradient2 gradient21;
+    private com.mycompany.sowan.swn.swing.gradient3 gradient31;
+    private com.mycompany.sowan.swn.swing.gradient4 gradient41;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel labeldepartemen;
+    private javax.swing.JLabel labelid;
+    private javax.swing.JLabel labeljabatan;
+    private javax.swing.JLabel labelname;
+    private javax.swing.JLabel labelstatus;
+    private javax.swing.JLabel labelwaktu;
     // End of variables declaration//GEN-END:variables
+    private void initClock(JLabel lblJam) {
+        DigitalClockService service = new DigitalClockService(lblJam, bahasaService.get("ui.date.format"));
+        clockThread = service.getThread();
+        clockThread.setName("Thread-Jam-Kiosk");
+        clockThread.setDaemon(true);
+        clockThread.start();
+    }
+
+    private void registerHandler() {
+        KaryawanService krService = new KaryawanService();
+        LogAbsensiService logService = new LogAbsensiService();
+
+        SerialService.getInstance().addHandler(dataRfid -> {
+            String hashedUid = SecurityUtils.getHash(dataRfid, SecurityUtils.SHA_256);
+            Karyawan k = krService.findByUid(hashedUid);
+           
+            SwingUtilities.invokeLater(() -> {
+                if (k != null) {
+                    logService.simpanLog(hashedUid, PanelPengaturan.prefs.get("LAST_STATUS", PanelPengaturan.statusAbsen));
+                        labelname.setText(bahasaService.get("ui.label.name")+": " + k.getNama_lengkap() + "");
+                        labelid.setText(bahasaService.get("ui.label.id")+": " + EncryptionUtils.decrypt(k.getId_karyawan()));
+                        labeldepartemen.setText(bahasaService.get("ui.label.dept")+": " + k.getDepartemen());
+                        labeljabatan.setText(bahasaService.get("ui.label.jabatan")+": " + k.getJabatan());
+                        updateLabelWithDelay(labelstatus, bahasaService.get("ui.status.success"));
+                } else {
+                    updateLabelWithDelay(labelstatus, bahasaService.get("ui.status.failed"));
+                }
+            });
+        });
+    }
+
+    private void updateLabelWithDelay(JLabel comp, String info) {
+        if (delayThread != null && delayThread.isAlive()) {
+            delayThread.interrupt();
+        }
+
+        delayThread = new Thread(() -> {
+            comp.setText(info); 
+            try {
+                for (int i = 3; i >= 1; i--) {
+                    Thread.sleep(1000);
+                }
+                
+                SwingUtilities.invokeLater(() -> comp.setText(PanelPengaturan.prefs.get("LAST_STATUS", PanelPengaturan.statusAbsen)));
+
+            } catch (InterruptedException e) {
+                // Penanganan jika thread dihentikan paksa (Interrupted)
+            }
+        });
+
+        delayThread.setName("delayThread"); 
+        delayThread.setDaemon(true);         
+        delayThread.start();
+    }
+
 }
