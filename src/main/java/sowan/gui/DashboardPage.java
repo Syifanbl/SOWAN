@@ -9,6 +9,7 @@ import com.mycompany.sowan.MainApp;
 import sowan.panels.PanelDashboard;
 import sowan.panels.PanelPengaturan;
 import sowan.panels.PanelRekapAbsensi;
+import sowan.gui.AttendancePage;
 
 
 
@@ -71,6 +72,7 @@ public class DashboardPage extends javax.swing.JFrame {
         btnSetting = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        btnabsesn = new javax.swing.JButton();
         targetDashboard = new com.mycompany.sowan.swn.swing.gradient2();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -158,6 +160,13 @@ public class DashboardPage extends javax.swing.JFrame {
             }
         });
 
+        btnabsesn.setText("Absen");
+        btnabsesn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnabsesnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout gradient41Layout = new javax.swing.GroupLayout(gradient41);
         gradient41.setLayout(gradient41Layout);
         gradient41Layout.setHorizontalGroup(
@@ -181,13 +190,13 @@ public class DashboardPage extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Logout)
-                            .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                            .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnabsesn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         gradient41Layout.setVerticalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +219,9 @@ public class DashboardPage extends javax.swing.JFrame {
                     .addGroup(gradient41Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(btnabsesn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -385,7 +396,7 @@ public class DashboardPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSettingActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
-         MainApp main = new MainApp();
+        MainApp main = new MainApp();
         main.setVisible(true); 
         this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_LogoutActionPerformed
@@ -397,7 +408,7 @@ public class DashboardPage extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
       MainApp main = new MainApp();
         main.setVisible(true); 
-        this.dispose();         // TODO add your handling code here:
+        this.dispose();         
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -451,6 +462,12 @@ public class DashboardPage extends javax.swing.JFrame {
     targetDashboard.repaint();
     }//GEN-LAST:event_jLabel11MouseClicked
 
+    private void btnabsesnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsesnActionPerformed
+        AttendancePage absen = new AttendancePage();
+        absen.setVisible(true); 
+        this.dispose(); 
+    }//GEN-LAST:event_btnabsesnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -482,6 +499,7 @@ public class DashboardPage extends javax.swing.JFrame {
     javax.swing.JButton btnDataKaryawan;
     javax.swing.JButton btnRekapPresensi;
     javax.swing.JButton btnSetting;
+    javax.swing.JButton btnabsesn;
     com.mycompany.sowan.swn.swing.gradient2 gradient21;
     com.mycompany.sowan.swn.swing.gradient4 gradient41;
     javax.swing.JLabel jLabel10;

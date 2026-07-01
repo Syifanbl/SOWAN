@@ -244,7 +244,7 @@ public class KaryawanService {
     }
     
     public Karyawan findByUid(String hashedUid) {
-        Bson filter = com.mongodb.client.model.Filters.eq("uidRfid", hashedUid);
+        Bson filter = com.mongodb.client.model.Filters.eq("rfid_uid", hashedUid);
         return DAO.findOne(filter);
     }
     
