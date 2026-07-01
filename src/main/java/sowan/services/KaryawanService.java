@@ -243,6 +243,11 @@ public class KaryawanService {
         return results;
     }
     
+    public Karyawan findByUid(String hashedUid) {
+        Bson filter = com.mongodb.client.model.Filters.eq("uidRfid", hashedUid);
+        return DAO.findOne(filter);
+    }
+    
     /**
      * 4.UPDATE: Memperbarui data karyawan menggunakan filter Bson [5], [6]
      *
