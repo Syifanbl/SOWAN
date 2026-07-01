@@ -139,7 +139,6 @@ public class KaryawanService {
                         + "<table style='margin-bottom: 5px;'>"
                         + "<tr><td><font color='#7f8c8d'><b>ID</b></font></td><td>:</td><td>" + EncryptionUtils.decrypt(k.getId_karyawan()) + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>Nama</b></font></td><td>:</td><td>" + k.getNama_lengkap() + "</td></tr>"
-                        + "<tr><td><font color='#7f8c8d'><b>RFID</b></font></td><td>:</td><td>" + k.getRfid_uid() + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>Dept</b></font></td><td>:</td><td>" + k.getDepartemen() + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>Jabatan</b></font></td><td>:</td><td>" + k.getJabatan() + "</td></tr>"
                         + "<tr><td><font color='#7f8c8d'><b>Shift</b></font></td><td>:</td><td>" + k.getShift() + "</td></tr>"
@@ -160,10 +159,10 @@ public class KaryawanService {
                 btnEdit.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 btnEdit.addActionListener(e -> {
                     FormEditKaryawan formEdit = new FormEditKaryawan(targetDashboard);
-                    formEdit.id_karyawan.setText(k.getId_karyawan());
+                    formEdit.id_karyawan.setText(EncryptionUtils.decrypt(k.getId_karyawan()));
                     formEdit.id_karyawan.setEnabled(false);
                     formEdit.txtDepartemen.setSelectedItem(k.getDepartemen());
-                    formEdit.rfid_uid.setText(k.getRfid_uid());
+                    formEdit.rfid_uid.setText("");
                     formEdit.nama_lengkap.setText(k.getNama_lengkap());
                     formEdit.jabatan.setSelectedItem(k.getJabatan());
                     formEdit.shift.setSelectedItem(k.getShift());
@@ -242,6 +241,11 @@ public class KaryawanService {
         // Search and return Karyawan objects directly
         List<Karyawan> results = DAO.findMany(Filters.or(filters));
         return results;
+    }
+    
+    public Karyawan findByUid(String hashedUid) {
+        Bson filter = com.mongodb.client.model.Filters.eq("uidRfid", hashedUid);
+        return DAO.findOne(filter);
     }
     
     /**
