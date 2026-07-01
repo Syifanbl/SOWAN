@@ -4,19 +4,47 @@
  */
 package sowan.panels;
 
+import java.util.Locale;
+import java.util.prefs.Preferences;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.Locale;
+import java.util.prefs.Preferences;
+import javax.swing.BorderFactory;
+import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import sowan.services.bahasaService;
+import sowan.gui.DashboardPage;
+
+
 /**
  *
  * @author SUWONO
  */
-public class PanelPengaturan extends javax.swing.JPanel {
+public class PanelPengaturan extends javax.swing.JPanel implements sowan.services.bahasaService.bahasaChangeListener {
+    public static String statusAbsen;
+    public static String statusLang;
+    public static Preferences prefs = Preferences.userNodeForPackage(PanelPengaturan.class);
 
     /**
      * Creates new form PanelPengaturan
      */
     public PanelPengaturan() {
+        // PERBAIKAN: Gunakan string "id" sebagai nilai default yang aman agar tidak null
+        bahasaService.setLocale(Locale.forLanguageTag(PanelPengaturan.prefs.get("LANGUAGE", "id"))); 
+        
         initComponents();
-        this.setOpaque(false);
+        
+        statusAbsen = prefs.get("LAST_STATUS", bahasaService.get("ui.status.in")); 
+        slidingStatusToggle2.setStatusByString(statusAbsen); 
+
+        statusLang = prefs.get("LANGUAGE", "id"); 
+        slidingLanguageToggle1.setSelectedLanguageIndexByString(statusLang);     
+        
+        bahasaService.registerListener(this);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,30 +55,169 @@ public class PanelPengaturan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jTabbedPane7 = new javax.swing.JTabbedPane();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jTabbedPane8 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        slidingLanguageToggle1 = new sowan.palette.SlidingLanguageToggle();
+        jPanel4 = new javax.swing.JPanel();
+        slidingStatusToggle2 = new sowan.palette.SlidingStatusToggle();
+        jPanel2 = new javax.swing.JPanel();
 
-        jLabel1.setText("INI PANEL PENGATURAN");
+        jTabbedPane2.addTab("tab1", jTabbedPane3);
+
+        jTabbedPane1.addTab("tab1", jTabbedPane4);
+
+        jTabbedPane5.addTab("Security", jTabbedPane7);
+        jTabbedPane5.addTab("General", jTabbedPane6);
+
+        slidingLanguageToggle1.setText("slidingLanguageToggle1");
+        slidingLanguageToggle1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                slidingLanguageToggle1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(slidingLanguageToggle1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(slidingLanguageToggle1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        slidingStatusToggle2.setText("slidingStatusToggle2");
+        slidingStatusToggle2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                slidingStatusToggle2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(slidingStatusToggle2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(slidingStatusToggle2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 89, Short.MAX_VALUE))
+        );
+
+        jTabbedPane8.addTab("General", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 622, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 332, Short.MAX_VALUE)
+        );
+
+        jTabbedPane8.addTab("Security", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(124, 124, 124))
+            .addComponent(jTabbedPane8)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jLabel1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jTabbedPane8)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void slidingLanguageToggle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slidingLanguageToggle1ActionPerformed
+        statusLang = slidingLanguageToggle1.getSelectedLanguageString();
+        prefs.put("LANGUAGE", statusLang);
+        bahasaService.setLocale(Locale.forLanguageTag(statusLang));
+    }//GEN-LAST:event_slidingLanguageToggle1ActionPerformed
+
+    private void slidingStatusToggle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slidingStatusToggle2ActionPerformed
+        statusAbsen = slidingStatusToggle2.getStatusString();
+        prefs.put("LAST_STATUS", statusAbsen);
+    }//GEN-LAST:event_slidingStatusToggle2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane jTabbedPane7;
+    private javax.swing.JTabbedPane jTabbedPane8;
+    private sowan.palette.SlidingLanguageToggle slidingLanguageToggle1;
+    private sowan.palette.SlidingStatusToggle slidingStatusToggle2;
     // End of variables declaration//GEN-END:variables
+
+    public void onLanguageChanged() {
+        SwingUtilities.invokeLater(() -> {            
+       
+            this.revalidate();
+            this.repaint();
+            
+            jPanel3.setBorder(BorderFactory.createTitledBorder(new LineBorder(new Color(0, 0, 0), 1, true), bahasaService.get("ui.setting.status")
+            , TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 14))); // NOI18N
+            
+            jPanel4.setBorder(BorderFactory.createTitledBorder(new LineBorder(new Color(0, 0, 0), 1, true), bahasaService.get("ui.setting.lang")
+            , TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 14))); // NOI18N
+        });
+    }
 }
+
