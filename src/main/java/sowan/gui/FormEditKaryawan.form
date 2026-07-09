@@ -67,17 +67,17 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="id_karyawan" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="txtDepartemen" min="-2" pref="127" max="-2" attributes="0"/>
+                                          <Component id="cmbdepartemen" min="-2" pref="127" max="-2" attributes="0"/>
                                           <Component id="Departemen_lbl" min="-2" max="-2" attributes="0"/>
                                           <Component id="jabatan_lbl" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                                          <Component id="jabatan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cmbjabatan" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel6" min="-2" pref="37" max="-2" attributes="0"/>
                                       <Component id="nama_lengkap" max="32767" attributes="0"/>
-                                      <Component id="shift" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cmbshift" alignment="0" max="32767" attributes="0"/>
                                       <Component id="rfid_uid" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -88,7 +88,7 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="95" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -121,13 +121,13 @@
                           <Component id="Departemen_lbl" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtDepartemen" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="shift" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbdepartemen" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbshift" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jabatan_lbl" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jabatan" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbjabatan" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -196,56 +196,43 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="txtDepartemen">
+        <Component class="javax.swing.JComboBox" name="cmbdepartemen">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Departemen Keuangan"/>
-                <StringItem index="1" value="Departemen Marketing"/>
-                <StringItem index="2" value="Departemen IT"/>
-                <StringItem index="3" value="Departemen Operasional"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;sowan.objects.ComboItem&gt;()" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDepartemenActionPerformed"/>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbdepartemenItemStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbdepartemenActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jabatan">
+        <Component class="javax.swing.JComboBox" name="cmbjabatan">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Manager"/>
-                <StringItem index="1" value="Staf"/>
-                <StringItem index="2" value="Supervisior"/>
-                <StringItem index="3" value=" "/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;sowan.objects.ComboItem&gt;()" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jabatanActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbjabatanActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="shift">
+        <Component class="javax.swing.JComboBox" name="cmbshift">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Pagi"/>
-                <StringItem index="1" value="Malam"/>
-                <StringItem index="2" value=" "/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;sowan.objects.ComboItem&gt;()" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>

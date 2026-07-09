@@ -9,7 +9,10 @@ import javax.swing.JPanel;
 import koneksi.Security;
 import sowan.objects.Karyawan;
 import sowan.services.KaryawanService;
-
+import sowan.services.bahasaService;
+import javax.swing.SwingUtilities;
+import koneksi.EncryptionUtils;
+import sowan.objects.ComboItem;
 /**
  *
  * @author SUWONO
@@ -17,7 +20,8 @@ import sowan.services.KaryawanService;
 public class FormEditKaryawan extends javax.swing.JFrame {
     
     public FormEditKaryawan(){
-    
+        initComponents();
+        renderLang(); // Tambahkan baris ini
     }
     
     private JPanel targetDashboard;
@@ -29,10 +33,12 @@ public class FormEditKaryawan extends javax.swing.JFrame {
      * @param targetDashboard
      */
     public FormEditKaryawan(JPanel targetDashboard) {
-    this.setUndecorated(true);
-    initComponents();
-    this.targetDashboard = targetDashboard;
-}
+        this.setUndecorated(true);
+        initComponents();
+        this.targetDashboard = targetDashboard;
+        
+        renderLang(); // Tambahkan baris ini
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,9 +58,9 @@ public class FormEditKaryawan extends javax.swing.JFrame {
         id_karyawan = new javax.swing.JTextField();
         rfid_uid = new javax.swing.JTextField();
         nama_lengkap = new javax.swing.JTextField();
-        txtDepartemen = new javax.swing.JComboBox<>();
-        jabatan = new javax.swing.JComboBox<>();
-        shift = new javax.swing.JComboBox<>();
+        cmbdepartemen = new javax.swing.JComboBox<>();
+        cmbjabatan = new javax.swing.JComboBox<>();
+        cmbshift = new javax.swing.JComboBox<>();
         btnSimpan = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBatal = new javax.swing.JButton();
@@ -93,21 +99,26 @@ public class FormEditKaryawan extends javax.swing.JFrame {
             }
         });
 
-        txtDepartemen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departemen Keuangan", "Departemen Marketing", "Departemen IT", "Departemen Operasional" }));
-        txtDepartemen.addActionListener(new java.awt.event.ActionListener() {
+        cmbdepartemen.setModel(new javax.swing.DefaultComboBoxModel<sowan.objects.ComboItem>());
+        cmbdepartemen.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbdepartemenItemStateChanged(evt);
+            }
+        });
+        cmbdepartemen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDepartemenActionPerformed(evt);
+                cmbdepartemenActionPerformed(evt);
             }
         });
 
-        jabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Staf", "Supervisior", " " }));
-        jabatan.addActionListener(new java.awt.event.ActionListener() {
+        cmbjabatan.setModel(new javax.swing.DefaultComboBoxModel<sowan.objects.ComboItem>());
+        cmbjabatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jabatanActionPerformed(evt);
+                cmbjabatanActionPerformed(evt);
             }
         });
 
-        shift.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pagi", "Malam", " " }));
+        cmbshift.setModel(new javax.swing.DefaultComboBoxModel<sowan.objects.ComboItem>());
 
         btnSimpan.setBackground(new java.awt.Color(0, 51, 153));
         btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,20 +161,20 @@ public class FormEditKaryawan extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(id_karyawan, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbdepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Departemen_lbl)
                                         .addComponent(jabatan_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cmbjabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(57, 57, 57)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nama_lengkap)
-                                    .addComponent(shift, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbshift, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(rfid_uid, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jLabel1)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,12 +201,12 @@ public class FormEditKaryawan extends javax.swing.JFrame {
                         .addComponent(Departemen_lbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(shift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbdepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbshift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jabatan_lbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbjabatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
@@ -219,9 +230,9 @@ public class FormEditKaryawan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDepartemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartemenActionPerformed
+    private void cmbdepartemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbdepartemenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDepartemenActionPerformed
+    }//GEN-LAST:event_cmbdepartemenActionPerformed
 
     private void nama_lengkapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_lengkapActionPerformed
         // TODO add your handling code here:
@@ -241,53 +252,123 @@ public class FormEditKaryawan extends javax.swing.JFrame {
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         try {
-           Karyawan K = new Karyawan();
+            // 1. Validasi ComboBox agar tidak error jika kosong
+            if (cmbdepartemen.getSelectedItem() == null || 
+                cmbjabatan.getSelectedItem() == null || 
+                cmbshift.getSelectedItem() == null) {
+                
+                javax.swing.JOptionPane.showMessageDialog(this, "Harap pilih Departemen, Jabatan, dan Shift dengan benar!");
+                return;
+            }
 
-            K.setId_karyawan(id_karyawan.getText());
+            Karyawan K = new Karyawan();
 
-            K.setRfid_uid(
-                Security.getHash(
-                    rfid_uid.getText(),
-                    Security.SHA_256
-                 )
-            );
+            // 2. Set Data Teks & Enkripsi
+            K.setId_karyawan(koneksi.Encryption.encrypt(id_karyawan.getText()));
+            K.setRfid_uid(koneksi.Security.getHash(rfid_uid.getText(), koneksi.Security.SHA_256));
+            K.setNama_lengkap(nama_lengkap.getText());
 
-        K.setNama_lengkap(nama_lengkap.getText());
-        K.setDepartemen(txtDepartemen.getSelectedItem().toString());
-        K.setJabatan(jabatan.getSelectedItem().toString());
-        K.setShift(shift.getSelectedItem().toString());
+            // 3. INI BAGIAN YANG DIPERBAIKI: Ambil KEY dari ComboItem
+            ComboItem itemDept = (ComboItem) cmbdepartemen.getSelectedItem();
+            ComboItem itemJabatan = (ComboItem) cmbjabatan.getSelectedItem();
+            ComboItem itemShift = (ComboItem) cmbshift.getSelectedItem();
 
+            K.setDepartemen(itemDept.getKey());
+            K.setJabatan(itemJabatan.getKey());
+            K.setShift(itemShift.getKey());
+
+            // 4. Proses Update ke Database
             KaryawanService service = new KaryawanService();
-
             service.updateKaryawan(K, targetDashboard);
 
             // Tutup form setelah berhasil
             this.dispose();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal memperbarui: " + e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(this, bahasaService.get("msg_update_gagal") + " " + e.getMessage());
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
-    private void jabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabatanActionPerformed
+    private void cmbjabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbjabatanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jabatanActionPerformed
+    }//GEN-LAST:event_cmbjabatanActionPerformed
+
+    private void cmbdepartemenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbdepartemenItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbdepartemenItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Departemen_lbl;
     private javax.swing.JLabel NIP_lbl;
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnSimpan;
+    public javax.swing.JComboBox<ComboItem> cmbdepartemen;
+    public javax.swing.JComboBox<ComboItem> cmbjabatan;
+    public javax.swing.JComboBox<ComboItem> cmbshift;
     public javax.swing.JTextField id_karyawan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JComboBox<String> jabatan;
     private javax.swing.JLabel jabatan_lbl;
     public javax.swing.JTextField nama_lengkap;
     public javax.swing.JTextField rfid_uid;
-    public javax.swing.JComboBox<String> shift;
-    public javax.swing.JComboBox<String> txtDepartemen;
     // End of variables declaration//GEN-END:variables
+        // Fungsi pembantu untuk memilih ComboBox berdasarkan Key Database
+    public void setComboSelectionByKey(javax.swing.JComboBox combo, String key) {
+        if (key == null) return;
+        for (int i = 0; i < combo.getItemCount(); i++) {
+            ComboItem item = (ComboItem) combo.getItemAt(i);
+            if (item.getKey().equals(key)) {
+                combo.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
+    private void renderLang() {
+        SwingUtilities.invokeLater(() -> {
+            // --- UPDATE LABEL & BUTTON ---
+            jLabel1.setText(bahasaService.get("edit_karyawan_title")); // Judul Form
+            NIP_lbl.setText(bahasaService.get("label_id"));
+            jLabel3.setText(bahasaService.get("label_nama")); // Karena Anda menggunakan jLabel3 untuk Nama
+            Departemen_lbl.setText(bahasaService.get("label_dept"));
+            jabatan_lbl.setText(bahasaService.get("label_jabatan"));
+            jLabel6.setText(bahasaService.get("label_shift"));
+
+            btnSimpan.setText(bahasaService.get("btn_simpan"));
+            btnBatal.setText(bahasaService.get("btn_batal"));
+
+            // --- UPDATE COMBOBOX ---
+            // 1. Simpan Kunci (Key) dari pilihan saat ini (jika ada) agar tidak reset saat ganti bahasa
+            String selectedDeptKey = (cmbdepartemen.getSelectedItem() != null) ? ((ComboItem) cmbdepartemen.getSelectedItem()).getKey() : null;
+            String selectedJabatanKey = (cmbjabatan.getSelectedItem() != null) ? ((ComboItem) cmbjabatan.getSelectedItem()).getKey() : null;
+            String selectedShiftKey = (cmbshift.getSelectedItem() != null) ? ((ComboItem) cmbshift.getSelectedItem()).getKey() : null;
+            
+            // 2. Isi ComboBox dengan objek ComboItem (Key, Terjemahan)
+            cmbdepartemen.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] { 
+                new ComboItem("dept_keuangan", bahasaService.get("dept_keuangan")), 
+                new ComboItem("dept_marketing", bahasaService.get("dept_marketing")), 
+                new ComboItem("dept_it", bahasaService.get("dept_it")), 
+                new ComboItem("dept_ops", bahasaService.get("dept_ops")) 
+            }));
+            
+            cmbjabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] { 
+                new ComboItem("jabatan_manager", bahasaService.get("jabatan_manager")), 
+                new ComboItem("jabatan_staf", bahasaService.get("jabatan_staf")), 
+                new ComboItem("jabatan_spv", bahasaService.get("jabatan_spv")) 
+            }));
+            
+            cmbshift.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] { 
+                new ComboItem("shift_pagi", bahasaService.get("shift_pagi")), 
+                new ComboItem("shift_malam", bahasaService.get("shift_malam")) 
+            }));
+            
+            // 3. Kembalikan pilihan berdasarkan KEY-nya
+            setComboSelectionByKey(cmbdepartemen, selectedDeptKey);
+            setComboSelectionByKey(cmbjabatan, selectedJabatanKey);
+            setComboSelectionByKey(cmbshift, selectedShiftKey);
+        });
+    }
+        
 }
