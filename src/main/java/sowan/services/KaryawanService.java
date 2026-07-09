@@ -97,11 +97,13 @@ public class KaryawanService {
         headerPanel.setOpaque(false);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(20, 25, 20, 25));
 
-        JLabel lblTitle = new JLabel("Manajemen Data Karyawan");
+        // PENERAPAN BAHASA: Judul Label
+        JLabel lblTitle = new JLabel(bahasaService.get("manajemen_karyawan_title"));
         lblTitle.setFont(new Font("SansSerif", Font.BOLD, 24));
         lblTitle.setForeground(new Color(44, 62, 80)); // Dark Blue/Gray
 
-        JButton btnTambah = new JButton("+ Tambah Karyawan");
+        // PENERAPAN BAHASA: Tombol Tambah
+        JButton btnTambah = new JButton(bahasaService.get("tambah_karyawan_btn"));
         btnTambah.setBackground(new Color(125, 88, 255)); // Modern Green
         btnTambah.setForeground(Color.WHITE);
         btnTambah.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -119,29 +121,25 @@ public class KaryawanService {
         targetDashboard.add(headerPanel, BorderLayout.NORTH);
 
         // --- GRID PANEL ---
-        // Gunakan hgap dan vgap yang lebih besar untuk pernapasan desain
         JPanel gridPanel = new JPanel(new GridLayout(0, 3, 20, 20));
         gridPanel.setOpaque(false);
         gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 25, 25, 25));
 
         try {
             for (Karyawan k : daftarKaryawan) {
-                // 2. Menghilangkan garis tepi pada CardPanel
                 JPanel cardPanel = new JPanel(new BorderLayout(10, 10));
                 cardPanel.setBackground(Color.WHITE);
-
-                // Gunakan EmptyBorder saja (tanpa LineBorder) agar garis hilang
                 cardPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-                // 3. Trik HTML Tabel untuk merapikan titik dua (:)
-                // Kita menggabungkan semua info ke dalam satu JLabel HTML
+                // PENERAPAN BAHASA: Label pada HTML Info Karyawan
                 String infoHtml = "<html>"
                         + "<table style='margin-bottom: 5px;'>"
                         + "<tr><td><font color='#7f8c8d'><b>ID</b></font></td><td>:</td><td>" + EncryptionUtils.decrypt(k.getId_karyawan()) + "</td></tr>"
-                        + "<tr><td><font color='#7f8c8d'><b>Nama</b></font></td><td>:</td><td>" + k.getNama_lengkap() + "</td></tr>"
-                        + "<tr><td><font color='#7f8c8d'><b>Dept</b></font></td><td>:</td><td>" + k.getDepartemen() + "</td></tr>"
-                        + "<tr><td><font color='#7f8c8d'><b>Jabatan</b></font></td><td>:</td><td>" + k.getJabatan() + "</td></tr>"
-                        + "<tr><td><font color='#7f8c8d'><b>Shift</b></font></td><td>:</td><td>" + k.getShift() + "</td></tr>"
+                        + "<tr><td><font color='#7f8c8d'><b>" + bahasaService.get("label_nama") + "</b></font></td><td>:</td><td>" + k.getNama_lengkap() + "</td></tr>"
+                        // Terjemahkan k.getDepartemen() (yang berisi key) menggunakan bahasaService
+                        + "<tr><td><font color='#7f8c8d'><b>" + bahasaService.get("label_dept") + "</b></font></td><td>:</td><td>" + bahasaService.get(k.getDepartemen()) + "</td></tr>"
+                        + "<tr><td><font color='#7f8c8d'><b>" + bahasaService.get("label_jabatan") + "</b></font></td><td>:</td><td>" + bahasaService.get(k.getJabatan()) + "</td></tr>"
+                        + "<tr><td><font color='#7f8c8d'><b>" + bahasaService.get("label_shift") + "</b></font></td><td>:</td><td>" + bahasaService.get(k.getShift()) + "</td></tr>"
                         + "</table></html>";
 
                 JLabel lblInfo = new JLabel(infoHtml);
@@ -152,7 +150,8 @@ public class KaryawanService {
                 controlPanel.setOpaque(false);
                 controlPanel.setBorder(BorderFactory.createEmptyBorder(15, 0, 0, 0));
 
-                JButton btnEdit = new JButton("Edit");
+                // PENERAPAN BAHASA: Tombol Edit
+                JButton btnEdit = new JButton(bahasaService.get("btn_edit"));
                 btnEdit.setBackground(new Color(52, 152, 219)); // Modern Blue
                 btnEdit.setForeground(Color.WHITE);
                 btnEdit.setFocusPainted(false);
@@ -161,22 +160,27 @@ public class KaryawanService {
                     FormEditKaryawan formEdit = new FormEditKaryawan(targetDashboard);
                     formEdit.id_karyawan.setText(EncryptionUtils.decrypt(k.getId_karyawan()));
                     formEdit.id_karyawan.setEnabled(false);
-                    formEdit.txtDepartemen.setSelectedItem(k.getDepartemen());
+                    formEdit.cmbdepartemen.setSelectedItem(k.getDepartemen());
                     formEdit.rfid_uid.setText("");
                     formEdit.nama_lengkap.setText(k.getNama_lengkap());
-                    formEdit.jabatan.setSelectedItem(k.getJabatan());
-                    formEdit.shift.setSelectedItem(k.getShift());
+                    formEdit.cmbjabatan.setSelectedItem(k.getJabatan());
+                    formEdit.cmbshift.setSelectedItem(k.getShift());
                     formEdit.setLocationRelativeTo(null);
                     formEdit.setVisible(true);
                 });
 
-                JButton btnDel = new JButton("Delete");
+                // PENERAPAN BAHASA: Tombol Delete
+                JButton btnDel = new JButton(bahasaService.get("btn_delete"));
                 btnDel.setBackground(new Color(231, 76, 60)); // Modern Red
                 btnDel.setForeground(Color.WHITE);
                 btnDel.setFocusPainted(false);
                 btnDel.setCursor(new Cursor(Cursor.HAND_CURSOR));
                 btnDel.addActionListener(e -> {
-                    int choice = JOptionPane.showConfirmDialog(null, "Hapus " + k.getNama_lengkap() + "?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                    // PENERAPAN BAHASA: Pesan Konfirmasi Hapus
+                    String pesan = bahasaService.get("tanya_hapus") + " " + k.getNama_lengkap() + "?";
+                    String judul = bahasaService.get("konfirmasi_judul");
+                    
+                    int choice = JOptionPane.showConfirmDialog(null, pesan, judul, JOptionPane.YES_NO_OPTION);
                     if (choice == JOptionPane.YES_OPTION) {
                         hapusKaryawan(k.getId_karyawan());
                         tampilKaryawan(targetDashboard, "");
@@ -198,7 +202,7 @@ public class KaryawanService {
             wrapper.add(gridPanel, BorderLayout.NORTH);
 
             JScrollPane scroll = new JScrollPane(wrapper);
-            scroll.setBorder(null); // Menghilangkan garis kotak luar yang membungkus semua kartu
+            scroll.setBorder(null); 
             scroll.setOpaque(false);
             scroll.getViewport().setOpaque(false);
             scroll.getVerticalScrollBar().setUnitIncrement(16);
@@ -244,7 +248,7 @@ public class KaryawanService {
     }
     
     public Karyawan findByUid(String hashedUid) {
-        Bson filter = com.mongodb.client.model.Filters.eq("rfid_uid", hashedUid);
+        Bson filter = com.mongodb.client.model.Filters.eq("uidRfid", hashedUid);
         return DAO.findOne(filter);
     }
     
@@ -255,18 +259,17 @@ public class KaryawanService {
      * @param page
      */
     public void updateKaryawan(Karyawan newK, JPanel targetDashboard) {
-        // Pastikan filter sesuai dengan nama field di database Anda
         Bson filter = Filters.eq("id_karyawan", newK.getId_karyawan());
         Karyawan k = DAO.findOne(filter);
         if (k != null) {
-
             DAO.update(filter, newK);
-            // Memberikan pesan sukses
-            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!");
-            // REFRESH menggunakan fungsi tampilKaryawan yang ada di class ini
+            
+            // PENERAPAN BAHASA: Notifikasi Sukses
+            JOptionPane.showMessageDialog(null, bahasaService.get("msg_update_sukses"));
             tampilKaryawan(targetDashboard, "");
         } else {
-            JOptionPane.showMessageDialog(null, "Data tidak ditemukan di database!");
+            // PENERAPAN BAHASA: Notifikasi Gagal
+            JOptionPane.showMessageDialog(null, bahasaService.get("msg_data_tidak_ditemukan"));
         }
     }
         

@@ -9,6 +9,10 @@ import javax.swing.JOptionPane;
 import sowan.gui.DashboardPage;
 import sowan.services.AuthService;
 import java.awt.Frame;
+import java.util.Locale;
+import javax.swing.SwingUtilities;
+import sowan.panels.PanelPengaturan;
+import sowan.services.bahasaService;
 
 
 
@@ -31,6 +35,15 @@ public class MainApp extends javax.swing.JFrame {
     public MainApp() {
         initComponents();
         setLocationRelativeTo(null);
+        bahasaService.setLocale(Locale.forLanguageTag(PanelPengaturan.prefs.get("LANGUAGE", PanelPengaturan.statusLang)));
+        
+        // Render teks untuk pertama kali saat form dibuka
+        renderLang(); 
+        
+        // Daftarkan listener agar renderLang() dieksekusi otomatis saat bahasa diubah di pengaturan
+        bahasaService.registerListener(() -> {
+            renderLang();
+        });
 
     
     }
@@ -54,7 +67,7 @@ public class MainApp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("LOGO SOWAN");
@@ -135,15 +148,15 @@ public class MainApp extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sowan-removebg-preview.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 350, 150));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 102, 255));
-        jButton1.setText("Close");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 153, 255), new java.awt.Color(153, 153, 153)));
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setBackground(new java.awt.Color(0, 153, 255));
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(0, 102, 255));
+        btnClose.setText("Close");
+        btnClose.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 153, 255), new java.awt.Color(153, 153, 153)));
+        btnClose.setContentAreaFilled(false);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -153,14 +166,14 @@ public class MainApp extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(402, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnClose)
                 .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton1)
+                .addComponent(btnClose)
                 .addContainerGap(402, Short.MAX_VALUE))
         );
 
@@ -178,9 +191,9 @@ public class MainApp extends javax.swing.JFrame {
     doLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
     this.dispose(); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
@@ -196,9 +209,9 @@ public class MainApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JToggleButton btnLogin;
     private com.mycompany.sowan.swn.swing.gradient4 gradient41;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,6 +237,20 @@ private void doLogin() {
             AuthService userService = new AuthService();
             userService.login(username, password, this);
         }
+    }
+    
+    private void renderLang() {
+        SwingUtilities.invokeLater(() -> {
+            // Pastikan key ("dashboard", "data_karyawan", dll) sesuai dengan 
+            // yang Anda tulis di dalam file messages_id.properties dan messages_en.properties
+            btnLogin.setText(bahasaService.get("btnLogin"));
+            btnClose.setText(bahasaService.get("btnClose"));
+            username.setText(bahasaService.get("username"));
+            password.setText(bahasaService.get("password"));
+            
+            // Tambahan jika ingin menerjemahkan teks tengah
+            // jLabel8.setText(bahasaService.get("selamat_datang")); 
+        });
     }
 
 }

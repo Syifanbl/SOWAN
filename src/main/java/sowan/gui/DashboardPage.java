@@ -6,10 +6,15 @@ package sowan.gui;
 
 import sowan.services.KaryawanService;
 import com.mycompany.sowan.MainApp;
+import java.awt.Component;
+import java.util.Locale;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import javax.swing.SwingUtilities;
 import sowan.panels.PanelDashboard;
 import sowan.panels.PanelPengaturan;
 import sowan.panels.PanelRekapAbsensi;
-import sowan.gui.AttendancePage;
+import sowan.services.bahasaService;
 
 
 
@@ -48,7 +53,15 @@ public class DashboardPage extends javax.swing.JFrame {
         styleMenuButton(btnDataKaryawan);
         styleMenuButton(btnRekapPresensi);
         styleMenuButton(btnSetting);
-
+        bahasaService.setLocale(Locale.forLanguageTag(PanelPengaturan.prefs.get("LANGUAGE", PanelPengaturan.statusLang)));
+        
+        // Render teks untuk pertama kali saat form dibuka
+        renderLang(); 
+        
+        // Daftarkan listener agar renderLang() dieksekusi otomatis saat bahasa diubah di pengaturan
+        bahasaService.registerListener(() -> {
+            renderLang();
+        });
     }
 
     /**
@@ -72,14 +85,13 @@ public class DashboardPage extends javax.swing.JFrame {
         btnSetting = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        btnabsesn = new javax.swing.JButton();
-        targetDashboard = new com.mycompany.sowan.swn.swing.gradient2();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtCari = new javax.swing.JTextField();
+        targetDashboard = new com.mycompany.sowan.swn.swing.gradient2();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -114,7 +126,8 @@ public class DashboardPage extends javax.swing.JFrame {
             }
         });
 
-        btnDashboard.setText("Dashboard");
+        btnDashboard.setText("<User Code>");
+        btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDashboardActionPerformed(evt);
@@ -122,6 +135,8 @@ public class DashboardPage extends javax.swing.JFrame {
         });
 
         btnDataKaryawan.setText("Data Karyawan");
+        btnDataKaryawan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDataKaryawan.setInheritsPopupMenu(true);
         btnDataKaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDataKaryawanActionPerformed(evt);
@@ -129,6 +144,7 @@ public class DashboardPage extends javax.swing.JFrame {
         });
 
         btnRekapPresensi.setText("Rekap Absensi");
+        btnRekapPresensi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRekapPresensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRekapPresensiActionPerformed(evt);
@@ -136,14 +152,13 @@ public class DashboardPage extends javax.swing.JFrame {
         });
 
         btnSetting.setText("Pengaturan");
+        btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSetting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSettingActionPerformed(evt);
             }
         });
 
-        Logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Logout.setForeground(new java.awt.Color(255, 255, 255));
         Logout.setText("Logout");
         Logout.setBorderPainted(false);
         Logout.setContentAreaFilled(false);
@@ -160,109 +175,74 @@ public class DashboardPage extends javax.swing.JFrame {
             }
         });
 
-        btnabsesn.setText("Absen");
-        btnabsesn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnabsesnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout gradient41Layout = new javax.swing.GroupLayout(gradient41);
         gradient41.setLayout(gradient41Layout);
         gradient41Layout.setHorizontalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradient41Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(gradient41Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRekapPresensi))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 24, Short.MAX_VALUE))
                     .addGroup(gradient41Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(gradient41Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(gradient41Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Logout)
-                            .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnabsesn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                            .addComponent(btnDataKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(gradient41Layout.createSequentialGroup()
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(12, 12, 12)
+                        .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRekapPresensi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         gradient41Layout.setVerticalGroup(
             gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradient41Layout.createSequentialGroup()
                 .addGap(152, 152, 152)
-                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(32, 32, 32)
+                .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(gradient41Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(gradient41Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnDataKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRekapPresensi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(34, 34, 34)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(gradient41Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
-                .addComponent(btnabsesn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(gradient41Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
                 .addGroup(gradient41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradient41Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradient41Layout.createSequentialGroup()
+                        .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
 
-        gradient21.add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 720));
-
-        targetDashboard.setPreferredSize(new java.awt.Dimension(1020, 590));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel8.setText("SELAMAT DATANG");
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sowan-removebg-preview.png"))); // NOI18N
-
-        javax.swing.GroupLayout targetDashboardLayout = new javax.swing.GroupLayout(targetDashboard);
-        targetDashboard.setLayout(targetDashboardLayout);
-        targetDashboardLayout.setHorizontalGroup(
-            targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(targetDashboardLayout.createSequentialGroup()
-                .addGroup(targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(targetDashboardLayout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(targetDashboardLayout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(480, Short.MAX_VALUE))
-        );
-        targetDashboardLayout.setVerticalGroup(
-            targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, targetDashboardLayout.createSequentialGroup()
-                .addContainerGap(240, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202))
-        );
-
-        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 1190, 690));
+        gradient21.add(gradient41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 260, 810));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setAlignmentX(0.0F);
@@ -290,7 +270,7 @@ public class DashboardPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1104, Short.MAX_VALUE)
                 .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(jLabel6)
@@ -307,7 +287,7 @@ public class DashboardPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        gradient21.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 50));
+        gradient21.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1520, 50));
 
         targetDashboard.setPreferredSize(new java.awt.Dimension(1020, 590));
 
@@ -324,69 +304,45 @@ public class DashboardPage extends javax.swing.JFrame {
             .addGroup(targetDashboardLayout.createSequentialGroup()
                 .addGroup(targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(targetDashboardLayout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(347, 347, 347)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(targetDashboardLayout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(324, Short.MAX_VALUE))
+                        .addGap(431, 431, 431)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(442, Short.MAX_VALUE))
         );
         targetDashboardLayout.setVerticalGroup(
             targetDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, targetDashboardLayout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(303, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202))
+                .addGap(246, 246, 246))
         );
 
-        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 1030, 660));
+        gradient21.add(targetDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 1260, 810));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, 1490, Short.MAX_VALUE))
-                .addGap(0, 64, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gradient21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(gradient21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-    // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelDashboard rekap = new PanelDashboard();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
-    }//GEN-LAST:event_btnDashboardActionPerformed
-
-    private void btnDataKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataKaryawanActionPerformed
-        showData("");
-    }//GEN-LAST:event_btnDataKaryawanActionPerformed
     
     private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
     
@@ -396,113 +352,127 @@ public class DashboardPage extends javax.swing.JFrame {
     showData(txtCari.getText());
     }//GEN-LAST:event_txtCariKeyReleased
 
-    private void btnRekapPresensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapPresensiActionPerformed
-    // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelRekapAbsensi rekap = new PanelRekapAbsensi();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // 1. Bersihkan panel dashboard dari konten lama
+        targetDashboard.removeAll();
 
-    }//GEN-LAST:event_btnRekapPresensiActionPerformed
+        // 2. Inisialisasi Panel Rekap Absensi
+        // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+        PanelDashboard rekap = new PanelDashboard();
 
-    private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
-    // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelPengaturan rekap = new PanelPengaturan();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
-    }//GEN-LAST:event_btnSettingActionPerformed
+        // 3. Masukkan ke targetDashboard
+        targetDashboard.setLayout(new java.awt.BorderLayout());
+        targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+
+        // 4. Refresh tampilan agar muncul
+        targetDashboard.revalidate();
+        targetDashboard.repaint();
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
         MainApp main = new MainApp();
-        main.setVisible(true); 
+        main.setVisible(true);
         this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_LogoutActionPerformed
+
+    private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
+        // 1. Bersihkan panel dashboard dari konten lama
+        targetDashboard.removeAll();
+
+        // 2. Inisialisasi Panel Rekap Absensi
+        // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+        PanelPengaturan rekap = new PanelPengaturan();
+
+        // 3. Masukkan ke targetDashboard
+        targetDashboard.setLayout(new java.awt.BorderLayout());
+        targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+
+        // 4. Refresh tampilan agar muncul
+        targetDashboard.revalidate();
+        targetDashboard.repaint();
+    }//GEN-LAST:event_btnSettingActionPerformed
+
+    private void btnRekapPresensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapPresensiActionPerformed
+        // 1. Bersihkan panel dashboard dari konten lama
+        targetDashboard.removeAll();
+
+        // 2. Inisialisasi Panel Rekap Absensi
+        // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+        PanelRekapAbsensi rekap = new PanelRekapAbsensi();
+
+        // 3. Masukkan ke targetDashboard
+        targetDashboard.setLayout(new java.awt.BorderLayout());
+        targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+
+        // 4. Refresh tampilan agar muncul
+        targetDashboard.revalidate();
+        targetDashboard.repaint();
+    }//GEN-LAST:event_btnRekapPresensiActionPerformed
+
+    private void btnDataKaryawanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataKaryawanActionPerformed
+        showData("");
+    }//GEN-LAST:event_btnDataKaryawanActionPerformed
+
+    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
+        // 1. Bersihkan panel dashboard dari konten lama
+        targetDashboard.removeAll();
+
+        // 2. Inisialisasi Panel Rekap Absensi
+        // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+        PanelDashboard rekap = new PanelDashboard();
+
+        // 3. Masukkan ke targetDashboard
+        targetDashboard.setLayout(new java.awt.BorderLayout());
+        targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+
+        // 4. Refresh tampilan agar muncul
+        targetDashboard.revalidate();
+        targetDashboard.repaint();
+    }//GEN-LAST:event_btnDashboardActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        MainApp main = new MainApp();
+        main.setVisible(true);
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // 1. Bersihkan panel dashboard dari konten lama
+        targetDashboard.removeAll();
+
+        // 2. Inisialisasi Panel Rekap Absensi
+        // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+        PanelPengaturan rekap = new PanelPengaturan();
+
+        // 3. Masukkan ke targetDashboard
+        targetDashboard.setLayout(new java.awt.BorderLayout());
+        targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+
+        // 4. Refresh tampilan agar muncul
+        targetDashboard.revalidate();
+        targetDashboard.repaint();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // 1. Bersihkan panel dashboard dari konten lama
+        targetDashboard.removeAll();
+
+        // 2. Inisialisasi Panel Rekap Absensi
+        // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
+        PanelRekapAbsensi rekap = new PanelRekapAbsensi();
+
+        // 3. Masukkan ke targetDashboard
+        targetDashboard.setLayout(new java.awt.BorderLayout());
+        targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
+
+        // 4. Refresh tampilan agar muncul
+        targetDashboard.revalidate();
+        targetDashboard.repaint();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         showData("");        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-      MainApp main = new MainApp();
-        main.setVisible(true); 
-        this.dispose();         
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-            // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelRekapAbsensi rekap = new PanelRekapAbsensi();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-      // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelPengaturan rekap = new PanelPengaturan();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        // 1. Bersihkan panel dashboard dari konten lama
-    targetDashboard.removeAll();
-    
-    // 2. Inisialisasi Panel Rekap Absensi
-    // Pastikan Anda membuat class PanelRekapAbsensi (JPanel)
-    PanelDashboard rekap = new PanelDashboard();
-    
-    // 3. Masukkan ke targetDashboard
-    targetDashboard.setLayout(new java.awt.BorderLayout());
-    targetDashboard.add(rekap, java.awt.BorderLayout.CENTER);
-    
-    // 4. Refresh tampilan agar muncul
-    targetDashboard.revalidate();
-    targetDashboard.repaint();
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void btnabsesnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsesnActionPerformed
-        AttendancePage absen = new AttendancePage();
-        absen.setVisible(true); 
-        this.dispose(); 
-    }//GEN-LAST:event_btnabsesnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -535,7 +505,6 @@ public class DashboardPage extends javax.swing.JFrame {
     javax.swing.JButton btnDataKaryawan;
     javax.swing.JButton btnRekapPresensi;
     javax.swing.JButton btnSetting;
-    javax.swing.JButton btnabsesn;
     com.mycompany.sowan.swn.swing.gradient2 gradient21;
     com.mycompany.sowan.swn.swing.gradient4 gradient41;
     javax.swing.JLabel jLabel10;
@@ -556,4 +525,18 @@ public void showData(String key) {
         K.tampilKaryawan(targetDashboard, key);
     }
 
+    private void renderLang() {
+        SwingUtilities.invokeLater(() -> {
+            // Pastikan key ("dashboard", "data_karyawan", dll) sesuai dengan 
+            // yang Anda tulis di dalam file messages_id.properties dan messages_en.properties
+            btnDashboard.setText(bahasaService.get("dashboard"));
+            btnDataKaryawan.setText(bahasaService.get("data_karyawan"));
+            btnRekapPresensi.setText(bahasaService.get("rekap_presensi"));
+            btnSetting.setText(bahasaService.get("pengaturan"));
+            Logout.setText(bahasaService.get("logout"));
+            
+            // Tambahan jika ingin menerjemahkan teks tengah
+            // jLabel8.setText(bahasaService.get("selamat_datang")); 
+        });
+    }
 }
